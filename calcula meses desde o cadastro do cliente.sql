@@ -1,10 +1,12 @@
 alter table dw_rep_ultimo_impl
 drop column dias_sem_cadastro
 
-alter table dw_rep_ultimo_impl
+alter table dw_dim_clientes
 add meses_impl int
 
-insert into dw_dim_clientes
+select * from dw_dim_clientes
+
+insert into dw_dim_clientes()
 SELECT dt_implantacao ,  DATEDIFF(MONTH, convert(datetime, dt_implantacao, 103 ) , getdate() ) AS meses_impl
 from dw_dim_clientes;
 
