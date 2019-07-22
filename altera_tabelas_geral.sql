@@ -10,9 +10,14 @@ add meses_impl int
 alter table dw_dim_clientes
 drop column meses_impl
 
-declare @cod_cli int
-select @cod_cli = cod_cli from dw_dim_clientes
+delete from dw_dim_clientes
 insert into dw_dim_clientes( meses_impl )
-SELECT DATEDIFF(MONTH, convert(datetime, dt_implantacao, 103 ) , getdate() )
+SELECT DATEDIFF(MONTH, convert(datetime, dt_implantacao, 103 ) , getdate() ) meses_impl
 from dw_dim_clientes
-where @cod_cli = @cod_cli
+
+
+update dw_dim_clientes
+set meses_impl = DATEDIFF(MONTH, convert(datetime, dt_implantacao, 103 ) , getdate() )
+
+SELECT nome_abrev, dt_implantacao ,  DATEDIFF(MONTH, convert(datetime, dt_implantacao, 103 ) , getdate() ) AS meses_impl
+from dw_dim_clientes;
