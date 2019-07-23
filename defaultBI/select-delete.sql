@@ -1,0 +1,1 @@
+select *from dw_peso_cobre where data >= GETDATE() - 2;
