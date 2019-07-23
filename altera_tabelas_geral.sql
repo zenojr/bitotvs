@@ -1,3 +1,12 @@
+select cod_rep, dt_implantacao, nom_abrev_rep, nome_abrev, meses_impl from dw_dim_clientes
+where meses_impl not in (0,1,2,3)
+where nom_abrev
+order by meses_impl
+
+where meses_impl = 3
+
+
+
 select * from dw_dim_clientes
 
 alter table dw_dim_clientes
