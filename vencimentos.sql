@@ -7,6 +7,7 @@ select * from dw_peso_cobre_2
 select * from dw_fat
 select * from eis_dimensao_dat
 
+select * from dw_vencimentos
 
 create table dw_vencimentos (
 	cod_empresa int,            
@@ -25,3 +26,30 @@ create table dw_vencimentos (
 	val_liq_tit_acr char(40),         
 	val_origin_tit_acr char(40)
 )
+
+alter table dw_vencimentos
+alter column cod_estab char(20)
+
+alter table dw_vencimentos 
+alter column cod_empresa char(20)
+
+alter table dw_vencimentos 
+alter column cod_espec_docto char(20)
+
+alter table dw_vencimentos 
+alter column cod_ser_docto char(20) 
+
+alter table dw_vencimentos 
+alter column cod_tit_acr char(20)
+
+alter table dw_vencimentos 
+alter column cod_parcela char(20)
+
+alter table dw_vencimentos 
+alter column cdn_cliente char(20)
+
+alter table dw_vencimentos 
+alter column cdn_repres char(20)
+
+alter table dw_vencimentos 
+alter column cod_portador char(20)
