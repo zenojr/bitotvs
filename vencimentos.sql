@@ -29,6 +29,23 @@ create table dw_vencimentos (
 	val_origin_tit_acr char(40)
 )
 
+
+update dw_dim_clientes
+set meses_impl = DATEDIFF(MONTH, convert(datetime, dt_implantacao, 103 ) , getdate() )
+
+select * from dw_vencimentos
+
+select cod_cliente, dat_emis_docto from dw_vencimentos DATEDIFF(day, convert(datetime, dat_emis_docto, 103 ) , getdate() )
+from dw_vencimentos
+
+declare @startdate varchar(20)
+set @startdate = (select dat_emis_docto from dw_vencimentos)
+print @startdate
+
+
+SELECT nome_abrev, dt_implantacao ,  DATEDIFF(MONTH, convert(datetime, dt_implantacao, 103 ) , getdate() ) AS meses_impl
+from dw_dim_clientes;
+
 alter table dw_vencimentos
 alter column cod_estab char(20)
 
@@ -55,5 +72,4 @@ alter column cdn_repres char(20)
 
 alter table dw_vencimentos 
 alter column cod_portador char(20)
-
 
