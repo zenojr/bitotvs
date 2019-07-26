@@ -38,8 +38,9 @@ select * from dw_vencimentos
 select cod_cliente, dat_emis_docto from dw_vencimentos DATEDIFF(day, convert(datetime, dat_emis_docto, 103 ) , getdate() )
 from dw_vencimentos
 
-select cod_cliente, datediff(day, convert(datetime, dat_emis_docto, 103), getdate() )
+select cod_cliente, dat_vencto_tit_acr, datediff(day, convert(date, dat_vencto_tit_acr, 103), getdate() ) as dias_vcto
 from dw_vencimentos
+where dat_vencto_tit_acr like '%2019'
 
 declare @startdate varchar(20)
 set @startdate = (select dat_emis_docto from dw_vencimentos where cod_tit_acr = 13050 )
