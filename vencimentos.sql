@@ -38,8 +38,11 @@ select * from dw_vencimentos
 select cod_cliente, dat_emis_docto from dw_vencimentos DATEDIFF(day, convert(datetime, dat_emis_docto, 103 ) , getdate() )
 from dw_vencimentos
 
+select cod_cliente, datediff(day, convert(datetime, dat_emis_docto, 103), getdate() )
+from dw_vencimentos
+
 declare @startdate varchar(20)
-set @startdate = (select dat_emis_docto from dw_vencimentos)
+set @startdate = (select dat_emis_docto from dw_vencimentos where cod_tit_acr = 13050 )
 print @startdate
 
 
