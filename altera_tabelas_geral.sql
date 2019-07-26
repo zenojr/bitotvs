@@ -8,6 +8,8 @@ where meses_impl = 3
 
 
 select * from dw_dim_clientes
+where nom_abrev_rep = 'C.N.V'
+order by dt_implantacao asc
 
 alter table dw_dim_clientes
 add  cod_rep int,
