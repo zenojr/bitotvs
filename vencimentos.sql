@@ -16,7 +16,7 @@ create table dw_vencimentos (
 	cod_estab int,               
 	cod_espec_docto char(20),
 	cod_ser_docto char(20),           
-	cod_tit_acr int,             
+	cod_tit_acr char(20),             
 	cod_parcela char(20),            
 	cod_cliente int,            
 	cod_repres int,             
@@ -55,3 +55,5 @@ alter column cdn_repres char(20)
 
 alter table dw_vencimentos 
 alter column cod_portador char(20)
+
+
