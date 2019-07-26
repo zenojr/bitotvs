@@ -9,16 +9,18 @@ select * from eis_dimensao_dat
 
 select * from dw_vencimentos
 
+drop table dw_vencimentos
+
 create table dw_vencimentos (
 	cod_empresa int,            
 	cod_estab int,               
-	cod_espec_docto int,
-	cod_ser_docto int,           
+	cod_espec_docto char(20),
+	cod_ser_docto char(20),           
 	cod_tit_acr int,             
-	cod_parcela int,            
-	cdn_cliente int,            
-	cdn_repres int,             
-	cod_portador int,           
+	cod_parcela char(20),            
+	cod_cliente int,            
+	cod_repres int,             
+	cod_portador char(20),           
 	dat_emis_docto char(40),         
 	dat_vencto_tit_acr char(40),     
 	dat_liquidac_tit_acr char(40),    
