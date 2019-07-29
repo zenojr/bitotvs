@@ -38,7 +38,12 @@ select * from dw_vencimentos
 select cod_cliente, dat_emis_docto from dw_vencimentos DATEDIFF(day, convert(datetime, dat_emis_docto, 103 ) , getdate() )
 from dw_vencimentos
 
-select cod_cliente, dat_vencto_tit_acr, datediff(day, convert(date, dat_vencto_tit_acr, 103), getdate() ) as dias_vcto
+select cod_cliente, dat_vencto_tit_acr, dat_liquidac_tit_acr, datediff(day, convert(date, dat_vencto_tit_acr, 103), getdate() ) as dias_vcto
+from dw_vencimentos
+where dat_vencto_tit_acr like '%2019'
+
+select cod_cliente, dat_vencto_tit_acr, dat_liquidac_tit_acr, 
+datediff(day, convert(date, dat_vencto_tit_acr, 103), convert(date, dat_liquidac_tit_acr, 103) ) as dias_pagto
 from dw_vencimentos
 where dat_vencto_tit_acr like '%2019'
 
@@ -49,7 +54,13 @@ print @startdate
 SELECT nome_abrev, dt_implantacao ,  DATEDIFF(MONTH, convert(datetime, dt_implantacao, 103 ) , getdate() ) AS meses_impl
 from dw_dim_clientes;
 
+select * from dw_vencimentos
 
+update dw_vencimentos
+set dias_vcto = datediff(day, convert(date, dat_vencto_tit_acr, 103), getdate() )
+
+alter table dw_vencimentos 
+add dias_vcto int
 
 alter table dw_vencimentos
 alter column cod_estab char(20)
