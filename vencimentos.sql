@@ -46,9 +46,10 @@ declare @startdate varchar(20)
 set @startdate = (select dat_emis_docto from dw_vencimentos where cod_tit_acr = 13050 )
 print @startdate
 
-
 SELECT nome_abrev, dt_implantacao ,  DATEDIFF(MONTH, convert(datetime, dt_implantacao, 103 ) , getdate() ) AS meses_impl
 from dw_dim_clientes;
+
+
 
 alter table dw_vencimentos
 alter column cod_estab char(20)
