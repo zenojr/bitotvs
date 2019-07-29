@@ -61,6 +61,12 @@ select * from dw_vencimentos
 update dw_vencimentos
 set dias_vcto = datediff(day, convert(date, dat_vencto_tit_acr, 103), getdate() )
 
+update dw_vencimentos
+set dias_atraso = datediff(day, convert(date, dat_vencto_tit_acr, 103), convert(date, dat_liquidac_tit_acr, 103) )
+
+alter table dw_vencimentos
+add dias_atraso int
+
 alter table dw_vencimentos 
 add dias_vcto int
 
