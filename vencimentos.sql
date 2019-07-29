@@ -43,9 +43,11 @@ from dw_vencimentos
 where dat_vencto_tit_acr like '%2019'
 
 select cod_cliente, dat_vencto_tit_acr, dat_liquidac_tit_acr, 
-datediff(day, convert(date, dat_vencto_tit_acr, 103), convert(date, dat_liquidac_tit_acr, 103) ) as dias_pagto
+datediff(day, convert(date, dat_vencto_tit_acr, 103), convert(date, dat_liquidac_tit_acr, 103) ) as dias_atraso
 from dw_vencimentos
-where dat_vencto_tit_acr like '%2019'
+where dat_vencto_tit_acr like '%2019'  
+and dat_liquidac_tit_acr not like '31/12/9999'
+order by dias_atraso
 
 declare @startdate varchar(20)
 set @startdate = (select dat_emis_docto from dw_vencimentos where cod_tit_acr = 13050 )
