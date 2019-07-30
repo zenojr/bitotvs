@@ -25,8 +25,10 @@ create table dw_vencimentos (
 	dat_vencto_tit_acr char(40),     
 	dat_liquidac_tit_acr char(40),    
 	dat_ult_liquidac_tit_acr char(40),
-	val_liq_tit_acr char(40),         
-	val_origin_tit_acr char(40)
+	val_liq_tit_acr decimal(17,2),         
+	val_origin_tit_acr decimal(17,2),
+	dias_atraso int,
+	dias_vcto int
 )
 
 
@@ -70,7 +72,7 @@ set dias_atraso = datediff(day, convert(date, dat_vencto_tit_acr, 103), convert(
 select * from dw_vencimentos
 
 
-create view viewValores as
+
 select cod_cliente, 
 convert(decimal(17, 2), val_liq_tit_acr ) as val_liq_tit_acr, 
 convert(decimal(17,2), val_origin_tit_acr) as val_origin_tit_acr
