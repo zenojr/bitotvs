@@ -56,6 +56,8 @@ print @startdate
 SELECT nome_abrev, dt_implantacao ,  DATEDIFF(MONTH, convert(datetime, dt_implantacao, 103 ) , getdate() ) AS meses_impl
 from dw_dim_clientes;
 
+select cod_cliente, dat_emis_docto,  from dw_vencimentos
+
 select * from dw_vencimentos
 
 update dw_vencimentos
@@ -64,36 +66,10 @@ set dias_vcto = datediff(day, convert(date, dat_vencto_tit_acr, 103), getdate() 
 update dw_vencimentos
 set dias_atraso = datediff(day, convert(date, dat_vencto_tit_acr, 103), convert(date, dat_liquidac_tit_acr, 103) )
 
-alter table dw_vencimentos
-add dias_atraso int
 
-alter table dw_vencimentos 
-add dias_vcto int
+select * from dw_vencimentos
 
-alter table dw_vencimentos
-alter column cod_estab char(20)
 
-alter table dw_vencimentos 
-alter column cod_empresa char(20)
-
-alter table dw_vencimentos 
-alter column cod_espec_docto char(20)
-
-alter table dw_vencimentos 
-alter column cod_ser_docto char(20) 
-
-alter table dw_vencimentos 
-alter column cod_tit_acr char(20)
-
-alter table dw_vencimentos 
-alter column cod_parcela char(20)
-
-alter table dw_vencimentos 
-alter column cdn_cliente char(20)
-
-alter table dw_vencimentos 
-alter column cdn_repres char(20)
-
-alter table dw_vencimentos 
-alter column cod_portador char(20)
-
+create view viewValoresVencimentos as
+select cod_cliente, convert(decimal(17, 2), val_liq_tit_acr ), convert(decimal(17,2), val_origin_tit_acr)
+from dw_vencimentos
