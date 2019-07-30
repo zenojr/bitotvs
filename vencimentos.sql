@@ -70,6 +70,9 @@ set dias_atraso = datediff(day, convert(date, dat_vencto_tit_acr, 103), convert(
 select * from dw_vencimentos
 
 
-create view viewValoresVencimentos as
-select cod_cliente, convert(decimal(17, 2), val_liq_tit_acr ), convert(decimal(17,2), val_origin_tit_acr)
+create view viewValores as
+select cod_cliente, 
+convert(decimal(17, 2), val_liq_tit_acr ) as val_liq_tit_acr, 
+convert(decimal(17,2), val_origin_tit_acr) as val_origin_tit_acr
 from dw_vencimentos
+
