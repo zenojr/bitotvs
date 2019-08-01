@@ -8,8 +8,13 @@ select * from dw_fat
 select * from eis_dimensao_dat
 
 select * from dw_vencimentos
+where dat_vencto_tit_acr < getdate()
 
-drop table dw_vencimentos
+select cast( '3355.53' as decimal(17,2) ) from dw_vencimentos
+
+select cod_cliente, dat_vencto_tit_acr from dw_vencimentos
+where dat_vencto_tit_acr like '%2019'
+
 
 create table dw_vencimentos (
 	cod_empresa int,            
